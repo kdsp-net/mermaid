@@ -1,5 +1,22 @@
 {{- if .Store.Get "hasMermaid" }}
-  <script type="module">
-    import mermaid from "{{ .Site.Params.mermaid.js_url }}";
-  </script>
+<script type="module">
+  import mermaid from "{{ .Site.Params.mermaid.js_url }}";
+
+  // Initialize Mermaid with custom configurations
+  document.addEventListener('DOMContentLoaded', () => {
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default", // Change to your desired theme
+      themeCSS: `
+        .node rect { fill: #f9f9f9; stroke: #333; }
+        .node text { fill: #333; }
+        .edgeLabel { background-color: #ffffff; border-radius: 5px; padding: 2px; font-size: 12px; }
+        .edgePath .path { stroke: #333; stroke-width: 2px; }
+      `,
+      flowchart: { curve: 'basis' }, // Customize the flowchart settings
+      logLevel: 3,
+      securityLevel: 'loose', // Adjust security level as needed
+    });
+  });
+</script>
 {{- end -}}
