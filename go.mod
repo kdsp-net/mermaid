@@ -1,4 +1,4 @@
-module github.com/hugomods/mermaid
+module github.com/kdsp-net/mermaid
 
 go 1.19
 
